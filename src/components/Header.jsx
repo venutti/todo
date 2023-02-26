@@ -1,11 +1,12 @@
-import { motion } from "framer-motion";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
 
 export default function Header() {
   return (
-    <header className="text-5xl font-light text-red-600 text-center mt-6 mb-10">
-      <motion.h1 initial={{ opacity: 0.3 }} animate={{ opacity: 1 }}>
-        LISTA DE TAREAS
-      </motion.h1>
-    </header>
+    <Box sx={{ my: 3, color: "error.main" }}>
+      <Typography align="center" variant="h2">
+        lista de tareas
+      </Typography>
+    </Box>
   );
 }

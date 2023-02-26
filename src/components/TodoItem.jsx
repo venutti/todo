@@ -1,41 +1,46 @@
-import CheckIcon from "./icons/CheckIcon";
-import CloseIcon from "./icons/CloseIcon";
-import classnames from "classnames";
 import useTodos from "../hooks/use-todos";
-import { motion, Reorder } from "framer-motion";
+
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import CircleOutlinedIcon from "@mui/icons-material/CircleOutlined";
+import TaskAltRoundedIcon from "@mui/icons-material/TaskAltRounded";
+
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import IconButton from "@mui/material/IconButton";
+import Divider from "@mui/material/Divider";
 
 export default function TodoItem({ todo }) {
   const { toggleCompleteTodo, deleteTodo } = useTodos();
 
   return (
-    <motion.li
-      initial={{ opacity: 0, scale: 0.3 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0 }}
-      transition={{
-        duration: 0.4,
-        type: "tween",
-      }}
-      className="py-1 px-2 border-b-2 flex gap-2 items-start"
-    >
-      <motion.div
-        whileHover={{ scale: 0.96 }}
-        className="grow cursor-pointer flex items-start gap-2"
-        onClick={() => toggleCompleteTodo(todo.id)}
+    <>
+      <ListItem
+        disablePadding
+        secondaryAction={
+          <IconButton
+            color="error"
+            edge="end"
+            aria-label="delete"
+            onClick={() => deleteTodo(todo.id)}
+          >
+            <CloseRoundedIcon />
+          </IconButton>
+        }
       >
-        <CheckIcon visible={todo.completed} />
-        <p
-          className={classnames("break-all", {
-            "line-through opacity-60": todo.completed,
-          })}
-        >
-          {todo.text}
-        </p>
-      </motion.div>
-
-      <div className="cursor-pointer" onClick={() => deleteTodo(todo.id)}>
-        <CloseIcon />
-      </div>
-    </motion.li>
+        <ListItemButton onClick={() => toggleCompleteTodo(todo.id)}>
+          <ListItemIcon>
+            {todo.completed ? (
+              <TaskAltRoundedIcon color="success" />
+            ) : (
+              <CircleOutlinedIcon color="info" />
+            )}
+          </ListItemIcon>
+          <ListItemText>{todo.text}</ListItemText>
+        </ListItemButton>
+      </ListItem>
+      <Divider />
+    </>
   );
 }

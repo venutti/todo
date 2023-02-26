@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.min-h-page {
+.app {
   min-height: 100svh;
+  background-color: #e7e7e7;
+  padding: 0.5rem;
 }

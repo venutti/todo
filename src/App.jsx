@@ -3,7 +3,7 @@ import MainSection from "./components/MainSection";
 
 export default function App() {
   return (
-    <div className="min-h-page bg-gray-300 p-4">
+    <div className="app">
       <Header />
       <MainSection />
     </div>

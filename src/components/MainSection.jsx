@@ -1,13 +1,21 @@
 import TodoTextInput from "./TodoTextInput";
+import TodoSwitcher from "./TodoSwitcher";
 import TodoList from "./TodoList";
 import Footer from "./Footer";
 
+import Paper from "@mui/material/Paper";
+
 export default function MainSection() {
   return (
-    <main className="bg-zinc-100 rounded shadow text-gray-700 max-w-lg mx-auto">
-      <TodoTextInput />
-      <TodoList />
-      <Footer />
-    </main>
+    <>
+      <Paper sx={{ maxWidth: "sm", mx: "auto" }}>
+        <TodoTextInput />
+      </Paper>
+      <Paper sx={{ maxWidth: "sm", mx: "auto", mt: 2 }}>
+        <TodoSwitcher />
+        <TodoList />
+        <Footer />
+      </Paper>
+    </>
   );
 }
