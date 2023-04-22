@@ -37,7 +37,14 @@ export default function TodoItem({ todo }) {
               <CircleOutlinedIcon color="info" />
             )}
           </ListItemIcon>
-          <ListItemText>{todo.text}</ListItemText>
+          <ListItemText
+            sx={{
+              color: todo.completed ? "gray" : "black",
+              textDecoration: todo.completed ? "line-through" : "none",
+            }}
+          >
+            {todo.text}
+          </ListItemText>
         </ListItemButton>
       </ListItem>
       <Divider />
