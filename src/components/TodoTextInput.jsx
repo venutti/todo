@@ -16,6 +16,7 @@ export default function TodoTextInput() {
   };
 
   const handleSubmit = () => {
+    if (todo === "") return;
     createTodo(todo);
     setTodo("");
   };
